@@ -96,9 +96,9 @@
                 }
                 context.clip();
 
-                if (obj.predraw) obj.predraw(this.canvas);
+                if (obj.preDraw) obj.preDraw(this.canvas);
                 obj.draw(this.canvas);
-                if (obj.postdraw) obj.postdraw(this.canvas);
+                if (obj.postDraw) obj.postDraw(this.canvas);
                 
                 // 子供達も実行
                 if (obj.children.length > 0) {
@@ -111,9 +111,9 @@
                 context.restore();
             }
             else {
-                if (obj.predraw) obj.predraw(this.canvas);
+                if (obj.preDraw) obj.preDraw(this.canvas);
                 obj.draw(this.canvas);
-                if (obj.postdraw) obj.postdraw(this.canvas);
+                if (obj.postDraw) obj.postDraw(this.canvas);
                 
                 // 子供達も実行
                 if (obj.children.length > 0) {

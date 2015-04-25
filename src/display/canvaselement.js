@@ -79,9 +79,9 @@ tm.display = tm.display || {};
         /**
          * バウンディングサークルを描画
          */
-        drawBoundingCircle: function(canvas) {
+        drawBoundingCircle: function(canvas, lineWidth) {
             canvas.save();
-            canvas.lineWidth = 2;
+            canvas.lineWidth = lineWidth || 2;
             canvas.strokeCircle(0, 0, this.radius);
             canvas.restore();
         },
@@ -89,9 +89,9 @@ tm.display = tm.display || {};
         /**
          * バウンディングレクトを描画
          */
-        drawBoundingRect: function(canvas) {
+        drawBoundingRect: function(canvas, lineWidth) {
             canvas.save();
-            canvas.lineWidth = 2;
+            canvas.lineWidth = lineWidth || 2;
             canvas.strokeRect(-this.width*this.originX, -this.height*this.originY, this.width, this.height);
             canvas.restore();
         },

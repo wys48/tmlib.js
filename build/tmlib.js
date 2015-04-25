@@ -14111,9 +14111,9 @@ tm.display = tm.display || {};
         /**
          * バウンディングサークルを描画
          */
-        drawBoundingCircle: function(canvas) {
+        drawBoundingCircle: function(canvas, lineWidth) {
             canvas.save();
-            canvas.lineWidth = 2;
+            canvas.lineWidth = lineWidth || 2;
             canvas.strokeCircle(0, 0, this.radius);
             canvas.restore();
         },
@@ -14121,9 +14121,9 @@ tm.display = tm.display || {};
         /**
          * バウンディングレクトを描画
          */
-        drawBoundingRect: function(canvas) {
+        drawBoundingRect: function(canvas, lineWidth) {
             canvas.save();
-            canvas.lineWidth = 2;
+            canvas.lineWidth = lineWidth || 2;
             canvas.strokeRect(-this.width*this.originX, -this.height*this.originY, this.width, this.height);
             canvas.restore();
         },
@@ -15651,7 +15651,9 @@ tm.display = tm.display || {};
                 }
                 context.clip();
 
+                if (obj.preDraw) obj.preDraw(this.canvas);
                 obj.draw(this.canvas);
+                if (obj.postDraw) obj.postDraw(this.canvas);
                 
                 // 子供達も実行
                 if (obj.children.length > 0) {
@@ -15664,7 +15666,9 @@ tm.display = tm.display || {};
                 context.restore();
             }
             else {
+                if (obj.preDraw) obj.preDraw(this.canvas);
                 obj.draw(this.canvas);
+                if (obj.postDraw) obj.postDraw(this.canvas);
                 
                 // 子供達も実行
                 if (obj.children.length > 0) {
